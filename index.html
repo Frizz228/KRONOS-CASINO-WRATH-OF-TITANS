@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ KRONOS CASINO · WRATH OF TITANS</title>
+    <!-- Font Awesome (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0705;
+            background-image: radial-gradient(circle at 20% 30%, #1e1410 0%, #050302 90%);
+            font-family: 'Segoe UI', 'Cinzel', 'Times New Roman', serif;
+            color: #ebd9b4;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .kronos-container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* glowing marble / obsidian panels */
+        .panel {
+            background: rgba(15, 10, 8, 0.85);
+            border: 2px solid #b8860b;
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .panel:hover {
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.9);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(180deg, #f9e7b3 0%, #b8860b 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px #ffb347, 0 0 30px #b36200;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #c0a86a;
+            border-bottom: 1px solid #b8860b;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-left: 6px solid #d4af37;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: #f5e6c6;
+            text-shadow: 0 0 8px #a0522d;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #e6c87c;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: #0e0b08;
+            border: 1px solid #a67c2e;
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+            transition: transform 0.15s, border-color 0.2s;
+            text-align: center;
+        }
+
+        .stat-card:hover {
+            border-color: #ffd966;
+            transform: translateY(-3px);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd966;
+            text-shadow: 0 0 10px #e6b800;
+            font-family: 'Cinzel', serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b8a27a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0a0705;
+            border: 1px solid #8b6914;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #1f160e;
+            color: #f5d98f;
+            padding: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #b8860b;
+        }
+
+        td {
+            padding: 0.7rem 0.8rem;
+            border-bottom: 1px solid #3d2b14;
+            color: #dac292;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .symbol-icon {
+            font-size: 1.4rem;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+        }
+
+        .badge {
+            background: #b8860b;
+            color: #0b0705;
+            font-weight: bold;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            background: #1e150f;
+            border: 1px solid #b8860b;
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            color: #f0d9a8;
+        }
+
+        .gamble-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gamble-card {
+            background: #1a120c;
+            border-left: 6px solid #b8860b;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .rtp-highlight {
+            background: linear-gradient(145deg, #2a1e12, #0f0a06);
+            border: 2px solid #c79a2e;
+            border-radius: 20px;
+            padding: 0.8rem 1.5rem;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #ffd966;
+            margin: 0.5rem 0;
+            box-shadow: 0 0 20px #b8860b55;
+        }
+
+        .jackpot-banner {
+            background: radial-gradient(circle at 20% 10%, #332211, #0a0502);
+            border: 2px solid #ffb347;
+            border-radius: 40px;
+            padding: 0.8rem 2rem;
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffd966;
+            text-shadow: 0 0 20px #ff8c00, 0 0 40px #b8860b;
+            margin: 1.5rem 0;
+        }
+
+        .manifesto {
+            font-style: italic;
+            text-align: right;
+            color: #c2a570;
+            border-top: 1px dashed #b8860b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: #f5c542;
+            text-decoration: none;
+            border-bottom: 1px dotted #b8860b;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #ffefb0;
+            border-bottom: 2px solid #ffd966;
+        }
+
+        .pttx-link {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #1e1a14;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            border: 1px solid #b8860b;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #776b4b;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+
+        .icon-gold {
+            color: #f5c542;
+            filter: drop-shadow(0 0 5px #ffb347);
+        }
+    </style>
+</head>
+<body>
+    <div class="kronos-container">
+
+        <!-- HEADER -->
+        <div class="panel" style="text-align: center;">
+            <h1>⚡ KRONOS CASINO</h1>
+            <div style="font-size: 2.2rem; letter-spacing: 12px; color: #d4af37; margin-top: -0.5rem;">WRATH OF TITANS</div>
+            <div class="subhead">High-volatility · 5×4 · Cascading Wins · Titanic Jackpot</div>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0;">
+                <span class="badge" style="background: #b8860b;">RTP 96.50%</span>
+                <span class="badge" style="background: #b8860b;">HIGH VOLATILITY</span>
+                <span class="badge" style="background: #b8860b;">HIT FREQ ~28.4%</span>
+            </div>
+        </div>
+
+        <!-- GAME OVERVIEW / SPECS -->
+        <div class="panel">
+            <h2><i class="fas fa-dice icon-gold"></i> GAME OVERVIEW</h2>
+            <div class="grid-3col">
+                <div class="stat-card"><div class="stat-value">5×4</div><div class="stat-label">Grid</div></div>
+                <div class="stat-card"><div class="stat-value">20</div><div class="stat-label">Visible positions</div></div>
+                <div class="stat-card"><div class="stat-value">25</div><div class="stat-label">Fixed paylines</div></div>
+                <div class="stat-card"><div class="stat-value">10–1,000</div><div class="stat-label">Stake (credits)</div></div>
+                <div class="stat-card"><div class="stat-value">x1,500</div><div class="stat-label">Titanic Jackpot</div></div>
+                <div class="stat-card"><div class="stat-value">x5</div><div class="stat-label">Max avalanche</div></div>
+            </div>
+            <p style="margin-top: 1.5rem; color: #cfb87c;">The 5×4 matrix provides 20 simultaneously visible positions, while 25 fixed paylines evaluate wins strictly from left to right, starting from Reel 1.</p>
+        </div>
+
+        <!-- VISUAL DIRECTION + CORE GAMEPLAY -->
+        <div class="grid-2col">
+            <div class="panel">
+                <h2><i class="fas fa-mountain icon-gold"></i> THE WRATH OF MOUNT OLYMPUS</h2>
+                <ul class="feature-list" style="flex-direction: column; align-items: flex-start;">
+                    <li><i class="fas fa-volcano"></i> 🌋 Volcanic obsidian</li>
+                    <li><i class="fas fa-fire"></i> 🔥 Blazing gold accents</li>
+                    <li><i class="fas fa-gem"></i> 🏛️ Ancient marble relics</li>
+                    <li><i class="fas fa-khanda"></i> ⚔️ Mythological warfare</li>
+                    <li><i class="fas fa-crown"></i> 👑 Immortal gods and titans</li>
+                </ul>
+                <p style="margin-top: 1rem; font-style: italic; color: #b8a27a;">Intense volatility, explosive chain reactions, and high single-spin exposure.</p>
+            </div>
+            <div class="panel">
+                <h2><i class="fas fa-gamepad icon-gold"></i> CORE GAMEPLAY</h2>
+                <div style="display: flex; justify-content: space-around; font-size: 1.1rem; margin-bottom: 1rem; color: #e6c87c;">
+                    <span>WAGER</span> <span>→</span> <span>SPIN</span> <span>→</span> <span>CASCADE</span> <span>→</span> <span>SETTLE</span>
+                </div>
+                <ol style="padding-left: 1.5rem; color: #dac292;">
+                    <li><strong>Wager</strong> – Choose stake between 10 and 1,000 credits.</li>
+                    <li><strong>Spin</strong> – 20 positions evaluated left to right.</li>
+                    <li><strong>Cascade</strong> – Winning symbols explode, new symbols tumble down.</li>
+                    <li><strong>Settle</strong> – Bank credits or enter 50/50 Gamble ladder.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- CASCADING & AVALANCHE MULTIPLIER -->
+        <div class="panel">
+            <h2><i class="fas fa-bolt icon-gold"></i> CASCADING GAMEPLAY</h2>
+            <div class="grid-2col">
+                <div>
+                    <h3><i class="fas fa-explosion"></i> Cascading Drops</h3>
+                    <ul style="padding-left: 1.2rem;">
+                        <li>Winning symbols explode.</li>
+                        <li>Empty positions are created.</li>
+                        <li>Remaining symbols tumble downward.</li>
+                        <li>New symbols enter the grid.</li>
+                        <li>New winning combinations trigger additional cascades.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3><i class="fas fa-fire"></i> Avalanche Multiplier</h3>
+                    <p>Every consecutive cascade increases the global spin win multiplier:</p>
+                    <div style="font-size: 2rem; font-weight: bold; color: #ffb347; letter-spacing: 5px; text-align: center; margin: 0.5rem 0;">x1 → x2 → x3 → x4 → x5</div>
+                    <p style="text-align: center;">Maximum multiplier <strong style="color:#ffd966;">x5</strong> during avalanche sequence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TITANIC JACKPOT BANNER -->
+        <div class="jackpot-banner">
+            🏆 TITANIC JACKPOT · FILL ALL 20 CELLS WITH KRONOS · x1,500 TOTAL STAKE 🏆
+        </div>
+
+        <!-- SYMBOL HIERARCHY & PAYOUTS -->
+        <div class="panel">
+            <h2><i class="fas fa-coins icon-gold"></i> SYMBOL HIERARCHY & PAYOUTS</h2>
+            <table>
+                <thead>
+                    <tr><th>Symbol</th><th>Tier</th><th>3 of a Kind</th><th>4 of a Kind</th><th>5 of a Kind</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>⚔️ Blade of Sparta</td><td>Low Tier</td><td>x0.5</td><td>x1.5</td><td>x4.0</td></tr>
+                    <tr><td>🪖 Warrior Helm</td><td>Low Tier</td><td>x0.8</td><td>x2.5</td><td>x6.0</td></tr>
+                    <tr><td>🛡️ Medusa Shield</td><td>Mid Tier</td><td>x1.2</td><td>x4.0</td><td>x10.0</td></tr>
+                    <tr><td>⛓️ Chains of Fate</td><td>High Tier</td><td>x2.0</td><td>x7.0</td><td>x18.0</td></tr>
+                    <tr><td>👑 Wrath of Kronos</td><td>Premium Top</td><td>x5.0</td><td>x20.0</td><td>x60.0</td></tr>
+                    <tr><td>🌀 Omega Symbol (Wild)</td><td>Wild</td><td>x10.0</td><td>x35.0</td><td>x100.0</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 0.5rem;"><span class="symbol-icon">🌀</span> Omega Wild substitutes any standard symbol except Scatter, completes highest payline.</p>
+        </div>
+
+        <!-- SPECIAL SYMBOLS & FREE SPINS -->
+        <div class="grid-2col">
+            <div class="panel">
+                <h2><i class="fas fa-star icon-gold"></i> SPECIAL SYMBOLS</h2>
+                <h3>🌀 Omega Wild</h3>
+                <p>Replaces any standard paytable symbol except Scatter, completes the highest possible payline combination.</p>
+                <h3 style="margin-top: 1rem;">🟡 Golden Pantheon Scatter</h3>
+                <p>Evaluated anywhere on the 20-cell grid, no specific payline required.</p>
+                <h3 style="margin-top: 1rem;">🔒 Sticky Wilds (Free Spins)</h3>
+                <p>Every Wild that lands becomes sticky, remains locked for entire bonus, participates in subsequent spins, awards +1 additional Free Spin.</p>
+            </div>
+            <div class="panel">
+                <h2><i class="fas fa-gift icon-gold"></i> FREE SPINS</h2>
+                <table>
+                    <thead><tr><th>Scatters</th><th>Reward</th></tr></thead>
+                    <tbody>
+                        <tr><td>3</td><td>10 Free Spins</td></tr>
+                        <tr><td>4</td><td>15 Free Spins + x10 stake</td></tr>
+                        <tr><td>5</td><td>25 Free Spins + x50 stake</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem;">During Free Spins, every Wild becomes sticky and awards +1 additional Free Spin.</p>
+            </div>
+        </div>
+
+        <!-- GAMBLE FEATURE -->
+        <div class="panel">
+            <h2><i class="fas fa-dice-d6 icon-gold"></i> DOUBLE-OR-NOTHING GAMBLE</h2>
+            <div class="gamble-grid">
+                <div class="gamble-card">
+                    <h3>🎨 Card Color Guess</h3>
+                    <p>Red vs. Black · Probability 50.0%</p>
+                    <p><strong style="color:#ffd966;">Correct: x2</strong> · Incorrect: forfeit</p>
+                </div>
+                <div class="gamble-card">
+                    <h3>♠️ Card Suit Guess</h3>
+                    <p>Spades / Hearts / Clubs / Diamonds · Probability 25.0%</p>
+                    <p><strong style="color:#ffd966;">Correct: x4</strong> · Incorrect: forfeit</p>
+                </div>
+            </div>
+            <p style="margin-top: 0.8rem;">Supports up to 5 consecutive guesses or max 50,000 credits.</p>
+        </div>
+
+        <!-- MATHEMATICAL MODEL & PHILOSOPHY -->
+        <div class="grid-2col">
+            <div class="panel">
+                <h2><i class="fas fa-calculator icon-gold"></i> MATHEMATICAL MODEL</h2>
+                <table>
+                    <tr><td>RTP</td><td><strong>96.50%</strong></td></tr>
+                    <tr><td>Volatility</td><td>High</td></tr>
+                    <tr><td>Hit Frequency</td><td>~28.4%</td></tr>
+                    <tr><td>Maximum Avalanche Multiplier</td><td>x5</td></tr>
+                    <tr><td>Titanic Jackpot</td><td>x1,500 stake</td></tr>
+                </table>
+                <p style="margin-top: 1rem;">Sequential cascades progressively amplify subsequent prize calculations through the Avalanche Multiplier system.</p>
+            </div>
+            <div class="panel">
+                <h2><i class="fas fa-brain icon-gold"></i> DESIGN PHILOSOPHY</h2>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1rem;"><span style="color:#ffb347;">⚔️ High Stakes</span> — targets players seeking high-volatility gameplay and large single-spin exposure.</li>
+                    <li style="margin-bottom: 1rem;"><span style="color:#ffb347;">💥 Escalation</span> — cascading wins build momentum through Avalanche Multiplier.</li>
+                    <li style="margin-bottom: 1rem;"><span style="color:#ffb347;">🎲 Risk & Reward</span> — optional Gamble ladder exchanges secured winnings for additional risk.</li>
+                </ul>
+                <div class="manifesto">“Fortune favors those bold enough to challenge the immortal gods themselves.”<br>— KRONOS CASINO Creative Manifesto</div>
+            </div>
+        </div>
+
+        <!-- FEATURE SUMMARY BOX (like ASCII style) -->
+        <div class="panel" style="font-family: 'Courier New', monospace; text-align: left;">
+            <pre style="color: #ebd9b4; font-size: 1rem; line-height: 1.4; margin: 0; white-space: pre-wrap;">
+┌──────────────────────────────────────┐
+│        WRATH OF TITANS               │
+├──────────────────────────────────────┤
+│  5 × 4 Grid                          │
+│  20 Visible Positions                │
+│  25 Fixed Paylines                   │
+│                                      │
+│  💥 Cascading Wins                   │
+│  🔥 Avalanche Multiplier up to x5    │
+│  🌀 Omega Wild                       │
+│  🟡 Golden Pantheon Scatter          │
+│  🔒 Sticky Wilds                     │
+│  🎲 Gamble Ladder                    │
+│  👑 Titanic Jackpot x1,500           │
+│                                      │
+│  RTP: 96.50%                         │
+│  Hit Frequency: ~28.4%               │
+│  Volatility: HIGH                    │
+└──────────────────────────────────────┘</pre>
+        </div>
+
+        <!-- PROJECT STATUS + LINK -->
+        <div class="panel" style="text-align: center;">
+            <h2><i class="fas fa-rocket icon-gold"></i> PROJECT STATUS</h2>
+            <p style="font-size: 1.4rem; color: #f5d98f;">CONCEPT SPECIFICATION</p>
+            <p>Ready for mathematical model integration · prototype demonstration · gameplay implementation · further feature development</p>
+            <div style="margin-top: 2rem;">
+                <a href="https://docs.google.com/presentation/d/1xENhlGJ6PaUGUYr4FXi2d85YrZ7PXz7-/edit?usp=sharing&ouid=116953388117023629811&rtpof=true&sd=true" target="_blank" class="pttx-link">
+                    <i class="fas fa-external-link-alt"></i> PTTX PRESENTATION (Google Slides)
+                </a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-note">
+            ⚡ KRONOS CASINO — WRATH OF TITANS · CHALLENGE THE GODS · TRIGGER THE AVALANCHE · CLAIM THE THRONE ⚡
+        </div>
+    </div>
+</body>
+</html>
