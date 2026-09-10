@@ -292,3 +292,5 @@ The project is positioned as ready for:
 ### WRATH OF TITANS
 
 **Challenge the gods. Trigger the avalanche. Claim the throne.**
+PTTX link
+https://docs.google.com/presentation/d/1xENhlGJ6PaUGUYr4FXi2d85YrZ7PXz7-/edit?usp=sharing&ouid=116953388117023629811&rtpof=true&sd=true
